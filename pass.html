@@ -1,53 +1,72 @@
 <!DOCTYPE html>
-<html>
- <head>
-   <title>JavaScript and DOM</title>
- </head>
+<html> 
+<head>
+    <title>Javascript and DOM</title>
+</head>
 <body>
-  
-<h1>Pass phrase by Samyuktha Kondaparthi</h1>
+<h2>Pass phraseby samyuktha kondaparthi</h2>
+
+<style>
+    .container {
+      position: relative;
+    }    
+    .bottomleft {
+      position: absolute;
+      bottom: 8px;
+      left: 16px;
+      font-size: 20px;
+      color:rgb(255, 251, 0);
+    }
+</style>
+
 <form>
-  <label for="Secret_Phrase">Enter the secret phrase</label>
-  <input type="password" id="Secret_Phrase" name="Secret_Phrase" value="Let me in" />
-  <br>
-  <br>
-  <label for="Enter_Phrase">Enter a phrase </label>
-  <input type ="text" id="Enter_Phrase" name="Enter_Phrase" autofocus> 
-  <br>
-  <br>
-  <input type="button" onclick="processPhrase()" value="Check the phrase">
+    <label for="Secret_Phrase">Enter the secret phrase</label>
+    <input type="password" id="Secret_Phrase" name="Secret_Phrase" value="Let me in" />
+    <br>
+    <br>
+    <label for="Enter_Phrase">Enter a phrase </label>
+    <input type ="text" id="Enter_Phrase" name="Enter_Phrase" autofocus> 
+    <br>
+    <br>
+    <input type="button" style="background-color: rgb(200, 255, 0); cursor:pointer;", onclick=" processPhrase()" value="Check the Phrase">
 </form>
 
 <p id="result">This result will be displayed!!</p>
-  <script> 
-      var correct = 0;
-      var wrong = 0;
+    <script> 
+        var correct = 0;
+        var wrong = 0;
 
-  function processPhrase (){
-      console.log("Getting form values")
-      Secret_Phrase = document.getElementById("Secret_Phrase").value
-      Enter_Phrase = document.getElementById("Enter_Phrase").value
-      confirmed = confirm("Check the values? "+Secret_Phrase+" and "+Enter_Phrase)    
-      out = document.getElementById("result")
-      if(Secret_Phrase == Enter_Phrase){
-          correct = correct+1;
-          alert("Access allowed!!");
-          out.innerHTML = "Correct count : "+correct + "<br>"+ "Wrong count : "+wrong;
-      } else {
-          wrong = wrong + 1
-          alert("Access denied!!");
-          out.innerHTML = "Correct count : "+correct + "<br>"+ "Wrong count : "+wrong;
-      }
-  }
-  </script>
-  <div class="container">
-    <img id ="Kingfisher" src="Kingfisher1.jpg" onclick="newImage()" height="200" weight="200">    
+    function processPhrase (){
+        console.log("Getting form values")
+        Secret_Phrase = document.getElementById("Secret_Phrase").value
+        Enter_Phrase = document.getElementById("Enter_Phrase").value
+        confirmed = confirm("Check the values? "+Secret_Phrase+" and "+Enter_Phrase)    
+        out = document.getElementById("result")
+        if (wrong<3){
+        if(Secret_Phrase == Enter_Phrase){
+            correct = correct+1;
+            alert("Access allowed!!");
+            out.innerHTML = "Correct count : "+correct + "<br>"+ "Wrong count : "+wrong;
+        } else {
+            wrong = wrong + 1
+            alert("Access denied!!");
+            out.innerHTML = "Correct count : "+correct + "<br>"+ "Wrong count : "+wrong;
+        }
+        }else{
+            alert("Account Locked.");
+        }
+        }
+    </script>
+
+<div class="container">
+    <img id ="kingfisher" src="Kingfisher1.jpg" onclick="newImage()" height="200" weight="200">    
+    <div class="bottomleft">Fauna</div>
     <script>
         var usingImage=1;
         function newImage(){
             switch(usingImage){
                 case 1:                        
-                    var x=document.getElementById("Kingfisher").src="Kingfisher1.jpg";                        
+                    var x=document.getElementById("Kingfisher").src="Kingfisher1.jpg";                       
                     usingImage++;
                     break;
 
@@ -57,7 +76,7 @@
                     break;
 
                 case 3:
-                    var z=document.getElementById("Kingfisher").src="parrot1.jpg";                        
+                    var z=document.getElementById("kingfisher").src="parrot1.jpg";                       
                     usingImage=1;
                     break;
             }
@@ -65,4 +84,4 @@
     </script>    
 </div>
 </body>
-</html> 
+</html>
